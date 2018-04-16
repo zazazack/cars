@@ -1,0 +1,25 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+scrapy = "*"
+mechanicalsoup = "*"
+scrapyd = "*"
+scrapy-fake-useragent = "*"
+scrapyd-client = "*"
+
+
+[dev-packages]
+
+bumpversion = "*"
+setuptools-scm = "*"
+
+
+[requires]
+
+python_version = "3.6"

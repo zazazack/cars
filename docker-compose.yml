@@ -17,7 +17,7 @@ services:
       - "./scrapy.cfg:/usr/src/scrapy.cfg"
       - "./scrapyd.conf:/usr/src/scrapyd.conf"
       - "./setup.py:/usr/src/setup.py"
-    command: scrapyds
+    command: scrapyd
 
 configs:
   scrapy.cfg:

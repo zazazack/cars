@@ -9,7 +9,6 @@ name = "pypi"
 
 scrapy = "*"
 mechanicalsoup = "*"
-scrapyd = "*"
 scrapy-fake-useragent = "*"
 scrapyd-client = "*"
 

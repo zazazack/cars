@@ -5,16 +5,16 @@ help:
 	@echo "clean	rm build files"
 	@echo "deploy deploy scrapy project to scrapyd"
 	@echo "test 	run tests"
-	@help "release update the version number"
+	@echo "release update the version number"
 
 build:
-	scrapyd-deploy
+	pipenv lock -r requirements.txt && docker-compose build
 
 clean:
-	rm -r build project.egg-info project dbs
+	@echo "Not implemented"
 
 deploy:
-	scrapyd-deploy -p project
+	@echo "Not implemented"
 
 release:
 	bumpversion release

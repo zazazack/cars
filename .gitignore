@@ -106,3 +106,6 @@ ENV/
 # Project
 data/**
 logs/**
+twistd.pid
+*.db
+.DS_Store

@@ -1,0 +1,13 @@
+version: "3.6"
+
+services:
+  app:
+    image: zwilson/cars
+    build: .
+    depends_on:
+      - scrapyd
+    env_file: .env
+    volumes:
+      - ./app:/usr/src/app
+      - ./configs/scrapy/scrapy.cfg:/usr/src/scrapy.cfg
+    

@@ -28,7 +28,7 @@ class AppPipeline(object):
     def get_spv(self, vin, miles, *args, **kwargs):
         """Get the Standard Presumptive Value (SPV)."""
         browser = StatefulBrowser()
-        browser.open('http://tools.txdmv.gov/tools/std_presumptive_value/')
+        browser.open('https://tools.txdmv.gov/tools/std_presumptive_value/')
         browser.select_form('form[name="VehicleInfo"]')
         browser['vin'] = vin
         browser['miles'] = int(miles)

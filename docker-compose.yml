@@ -7,7 +7,18 @@ services:
     depends_on:
       - scrapyd
     env_file: .env
+    ports:
+      - "6800:6800"
+    configs:
+      - source: scrapy.cfg
+        target: /usr/src/scrapy.cfg
+      - source: scrapyd.conf
+        target: /usr/src/scrapyd.conf
     volumes:
-      - ./app:/usr/src/app
-      - ./configs/scrapy/scrapy.cfg:/usr/src/scrapy.cfg
-    
+      - "./app:/usr/src/app"
+      - "./data:/usr/src/data"
+      - "./logs:/usr/src/logs"
+      - "./scrapy.cfg:/usr/src/scrapy.cfg"
+      - "./scrapyd.conf:/usr/src/scrapyd.conf"
+      - "./setup.py:/usr/src/setup.py"
+    command: scrapyd

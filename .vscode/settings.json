@@ -1,0 +1,7 @@
+{
+    "python.testing.pytestArgs": [],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.pythonPath": "/Users/zacharywilson/Projects/repos/cars/.venv/bin/python3"
+}

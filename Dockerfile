@@ -1,9 +1,8 @@
-FROM python:3
-
-WORKDIR /usr/src
-COPY requirements.txt .
-RUN pip install --no-cache-dir -U pip && \
-  pip install --no-cache-dir -r requirements.txt
-COPY ./app .
-EXPOSE 6800
-CMD ["scrapyd"]
+FROM centos:latest AS base
+ENV PYTHONUNBUFFERED=1
+RUN yum update -y && yum install -y python3
+RUN adduser scrapy
+WORKDIR /usr/src/app
+COPY ./requirements.txt .
+RUN python3 -m pip install --user --no-cache-dir -r requirements.txt && rm -rf requirements.txt
+COPY ./app/ ./app/

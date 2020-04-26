@@ -1,0 +1,35 @@
+version: "3.6"
+
+networks:
+  backend:
+
+services:
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    network:
+      - backend
+    environment:
+      - POSTGRES_DB=scrapy
+      - POSTGRES_USER=scrapy
+      - POSTGRES_PASSWORD=scrapy
+  app:
+    image: zwilson/cars:latest
+    build: https://github.com/zazazack/cars.git
+    config:
+      - source: scrapy.cfg
+        target: /usr/src/scrapy.cfg
+    ports:
+      - "25:25" # telnet
+    volumes:
+      - logs:/var/tmp/logs
+      - data:/mnt/app/data
+
+volumes:
+  logs:
+  data:
+
+configs:
+  scrapy.cfg:
+    file: ./config/scrapy.cfg

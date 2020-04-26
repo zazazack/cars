@@ -3,21 +3,14 @@
 help:
 	@echo "build	run the build script"
 	@echo "clean	rm build files"
-	@echo "deploy deploy scrapy project to scrapyd"
-	@echo "test 	run tests"
-	@echo "release update the version number"
+	@echo "deploy	deploy scrapy project to scrapyd"
 
-build:
-	pipenv lock -r requirements.txt && docker-compose build
+install:
+	python -m pip install -r requirements.txt
 
 clean:
-	@echo "Not implemented"
+	find . -name '__pycache__' -type d -name '*.pyc' -type f -exec -v -rf {} +
+	rm -rf *_cache/ .eggs/ .scrapy/ .DS_Store
 
 deploy:
 	@echo "Not implemented"
-
-release:
-	bumpversion release
-
-test:
-	pytest

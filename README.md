@@ -15,14 +15,13 @@ From source:
     python -m venv .venv
     python -m pip install -r requirements.txt
 
-
 <!-- TODO: instructions for docker stack, docker-compose, and/or docker service deploy -->
 
 ## Usage
 
 Adhoc run
 
-    scrapy crawl --logfile=./logs/$(date +%Y-%m-%d).log craigslist
+    scrapy crawl -L INFO --logfile=scrapy.log craigslist
 
 Tail the logs
 
@@ -30,6 +29,4 @@ Tail the logs
 
 View the data
 
-    head ./data/craigslist/$(date +%Y-%m-%dT%H-%M-%S).json
-
-
+    head ./data/craigslist/*.json

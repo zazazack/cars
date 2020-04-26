@@ -1,24 +1,38 @@
 version: "3.6"
 
+volumes:
+  postgres:
+  data:
+  logs:
+
 services:
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=scrapy
+      - POSTGRES_USER=scrapy
+      - POSTGRES_PASSWORD=scrapy
+  filebrowser:
+    image: filebrowser
+    ports:
+      - 8080:80
+    volumes:
+      - ./config:/srv/config
+      - ./docs:/srv/docs
+      - data:/srv/data
+      - logs:/srv/logs
   app:
     image: zwilson/cars
     build: .
-    depends_on:
-      - scrapyd
     env_file: .env
     ports:
       - "6800:6800"
-    configs:
-      - source: scrapy.cfg
-        target: /usr/src/scrapy.cfg
-      - source: scrapyd.conf
-        target: /usr/src/scrapyd.conf
     volumes:
       - "./app:/usr/src/app"
+      - "./config:/etc/app/"
+      - "logs:/var/log"
       - "./data:/usr/src/data"
-      - "./logs:/usr/src/logs"
-      - "./scrapy.cfg:/usr/src/scrapy.cfg"
-      - "./scrapyd.conf:/usr/src/scrapyd.conf"
-      - "./setup.py:/usr/src/setup.py"
+      - "./config/scrapy.cfg:/usr/src/scrapy.cfg"
     command: scrapyd

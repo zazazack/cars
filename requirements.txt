@@ -1,1 +1,5 @@
-scrapyd
+scrapy
+mechanicalsoup
+bs4
+requests
+scrapy-fake-useragent
